@@ -6,14 +6,24 @@
     <description>Recent content on All ML</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 30 Apr 2026 12:54:25 +0530</lastBuildDate>
+    <lastBuildDate>Thu, 30 Apr 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://naveenkb.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>First Post</title>
-      <link>https://naveenkb.github.io/posts/first-post/</link>
-      <pubDate>Thu, 30 Apr 2026 12:54:25 +0530</pubDate>
-      <guid>https://naveenkb.github.io/posts/first-post/</guid>
-      <description>&lt;p&gt;Experimental post&lt;/p&gt;</description>
+      <title>Local LLMs</title>
+      <link>https://naveenkb.github.io/posts/local_llm/</link>
+      <pubDate>Thu, 30 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>https://naveenkb.github.io/posts/local_llm/</guid>
+      <description>&lt;p&gt;Run LLMs locally for better privacy, control, and cost efficiency.&lt;/p&gt;
+&lt;p&gt;This is a brief guide to setting up a local LLM for coding tasks. At a high level, we need three components:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;LLM Model&lt;/li&gt;
+&lt;li&gt;Coding Harness&lt;/li&gt;
+&lt;li&gt;Model Dock*&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;llm-model&#34;&gt;LLM Model&lt;/h3&gt;
+&lt;p&gt;Large Language Models are available on &lt;a href=&#34;https://huggingface.co/models?library=gguf&amp;amp;sort=trending&#34;&gt;Hugging Face&lt;/a&gt;. You can choose a model based on factors such as size, quantization, and capabilities. This guide uses Qwen 3.6 27B.&lt;/p&gt;
+&lt;h3 id=&#34;coding-harness&#34;&gt;Coding Harness&lt;/h3&gt;
+&lt;p&gt;A coding harness is a tool that uses an LLM to assist with coding tasks. &lt;a href=&#34;https://github.com/anomalyco/opencode&#34;&gt;OpenCode&lt;/a&gt;, &lt;a href=&#34;https://github.com/badlogic/pi-mono/tree/main/packages/coding-agent&#34;&gt;Pi&lt;/a&gt; are a few open source options. Pi is a minimal terminal coding harness. Pi is also highly customizable.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
