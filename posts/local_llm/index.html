@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html lang="en" dir="auto" data-theme="auto">
 
-<head><meta charset="utf-8">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=55024&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="index, follow">
+<meta name="robots" content="noindex, nofollow">
 <title>Local LLMs | All ML</title>
 <meta name="keywords" content="">
 <meta name="description" content="Run LLMs locally for better privacy, control, and cost efficiency.">
 <meta name="author" content="">
-<link rel="canonical" href="https://naveenkb.github.io/posts/local_llm/">
+<link rel="canonical" href="http://localhost:55024/posts/local_llm/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.34d91883bcea6e759c2d3a842c5975efd544bfec7ea2927692a4497df4c731c0.css" integrity="sha256-NNkYg7zqbnWcLTqELFl179VEv&#43;x&#43;opJ2kqRJffTHMcA=" rel="preload stylesheet" as="style">
-<link rel="icon" href="https://naveenkb.github.io/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="https://naveenkb.github.io/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="https://naveenkb.github.io/favicon-32x32.png">
-<link rel="apple-touch-icon" href="https://naveenkb.github.io/apple-touch-icon.png">
-<link rel="mask-icon" href="https://naveenkb.github.io/safari-pinned-tab.svg">
+<link rel="icon" href="http://localhost:55024/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:55024/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:55024/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:55024/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:55024/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="https://naveenkb.github.io/posts/local_llm/">
+<link rel="alternate" hreflang="en" href="http://localhost:55024/posts/local_llm/">
 <noscript>
     <style>
         #theme-toggle,
@@ -64,76 +64,14 @@
         document.querySelector("html").dataset.theme = 'light';
     }
 
-</script><meta property="og:url" content="https://naveenkb.github.io/posts/local_llm/">
-  <meta property="og:site_name" content="All ML">
-  <meta property="og:title" content="Local LLMs">
-  <meta property="og:description" content="Run LLMs locally for better privacy, control, and cost efficiency.">
-  <meta property="og:locale" content="en_us">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2026-04-30T00:00:00+00:00">
-    <meta property="article:modified_time" content="2026-04-30T00:00:00+00:00">
+</script><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "960b7fa46b5a423fab002e546d0ec110"}'></script>
 
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Local LLMs">
-  <meta name="twitter:description" content="Run LLMs locally for better privacy, control, and cost efficiency.">
-
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position":  1 ,
-      "name": "Posts",
-      "item": "https://naveenkb.github.io/posts/"
-    }, 
-    {
-      "@type": "ListItem",
-      "position":  2 ,
-      "name": "Local LLMs",
-      "item": "https://naveenkb.github.io/posts/local_llm/"
-    }
-  ]
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "Local LLMs",
-  "name": "Local LLMs",
-  "description": "Run LLMs locally for better privacy, control, and cost efficiency.\n",
-  "keywords": [
-    
-  ],
-  "articleBody": "Run LLMs locally for better privacy, control, and cost efficiency.\nThis is a brief guide to setting up a local LLM for coding tasks. At a high level, we need three components:\nLLM Model Coding Harness Model Dock* LLM Model Large Language Models are available on Hugging Face. You can choose a model based on factors such as size, quantization, and capabilities. This guide uses Qwen 3.6 27B.\nCoding Harness A coding harness is a tool that uses an LLM to assist with coding tasks. OpenCode, Pi are a few open source options. Pi is a minimal terminal coding harness. Pi is also highly customizable.\nModel Dock A Model Dock is a wrapper around inference engines that makes them easier to use. An inference engine is responsible for:\nloading the trained model running inference efficiently For example:\nllama.cpp — low-level, high-performance inference engine Ollama LM Studio In this guide, we will use llama.cpp directly instead of a wrapper.\nSteps Install llama.cpp\nRefer to this installation guide for various options. In this blog, I will be using the steps for a macOS.\nbrew install llama.cpp\nStart llama server llama.cpp provides both CLI and server modes. Since we want to connect it to Pi, we will run it in server mode. We also need to point it to a model from HuggingFace as mentioned before.\nllama-server -hf unsloth/Qwen3.6-27B-GGUF Replace unsloth/Qwen3.6-27B-GGUF with any other preferred model from HF. This command:\ndownloads the model (if not already present) starts a local inference server Install Pi Pi has options to use package managers (npm, pnpm, bun) or via shell script.\ncurl -fsSL https://pi.dev/install.sh | bash\nYou may need Node.js and npm installed.\nAdd local model to Pi Edit ~/.pi/agent/models.json\nExample configuration:\n{ \"providers\": { \"llama-cpp\": { \"baseUrl\": \"http://localhost:8080\", \"api\": \"openai-completions\", \"apiKey\": \"none\", \"models\": [ { \"id\": \"Qwen3.6-27B-GGUF\", \"name\": \"Qwen 3.6 27B local\", \"reasoning\": true, \"contextWindow\": 62000, \"maxTokens\": 32000 } ] } } } Pi supports multiple API types. Refer to the supported APIs page for details.\nRun Pi\npi This starts the coding harness and connects to your local model. You can now interact with your local LLM.\n* “Model Dock” is not a standard term. I am using it to group tools like LM Studio and Ollama.\n",
-  "wordCount" : "373",
-  "inLanguage": "en",
-  "datePublished": "2026-04-30T00:00:00Z",
-  "dateModified": "2026-04-30T00:00:00Z",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://naveenkb.github.io/posts/local_llm/"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "All ML",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://naveenkb.github.io/favicon.ico"
-    }
-  }
-}
-</script>
 </head>
 <body id="top">
     <header class="header">
     <nav class="header-nav">
         <div class="logo">
-            <a href="https://naveenkb.github.io/" accesskey="h" title="All ML (Alt + H)">All ML</a>
+            <a href="http://localhost:55024/" accesskey="h" title="All ML (Alt + H)">All ML</a>
             <div class="logo-switches">
                 <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
@@ -266,7 +204,7 @@ This starts the coding harness and connects to your local model. You can now int
     </main>
     
 <footer class="footer">
-        <span>&copy; 2026 <a href="https://naveenkb.github.io/">All ML</a></span> · 
+        <span>&copy; 2026 <a href="http://localhost:55024/">All ML</a></span> · 
 
     <span>
         Powered by
